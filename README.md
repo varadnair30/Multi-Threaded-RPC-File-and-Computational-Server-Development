@@ -57,14 +57,28 @@ Server:
 •	Make an instance of the custom server class, register any required functions, and specify the server's IP and port number. 
 •	Start the server using server.serve_forever(), which keeps it running and ready to answer client queries.
 
- 
-  
-    
- 
-Part 1
+ ![image](https://github.com/user-attachments/assets/680b7071-2217-418e-a0ac-28268418268e)
+
+  ![image](https://github.com/user-attachments/assets/026c3481-7445-42a0-9a05-e8525f2883ce)
+
+  ![image](https://github.com/user-attachments/assets/61b65ae5-7f15-4f9b-8c8c-e5e52ef24251)
+      
+ ![image](https://github.com/user-attachments/assets/00f1926c-6021-45b6-a15e-001a2ab5e0e1)
+
+![image](https://github.com/user-attachments/assets/7255260f-be01-409f-a4b1-b90e0edd5851)
+
+![image](https://github.com/user-attachments/assets/2ec8ae2a-48d4-4c99-ad38-60de6e59266e)
+
+![image](https://github.com/user-attachments/assets/254e46b6-3b25-4743-9f36-2665ae9d9ece)
+
+![image](https://github.com/user-attachments/assets/b2d215d8-eed8-4c92-8b27-b188aae7637c)
 
 
-Part 2: Automatic File Syncing
+
+     Part 1
+
+
+**Part 2: Automatic File Syncing**
 Part 2 comprises automatic file synchronization between the client and server. When a client creates, updates, or deletes a file, a helper thread duplicates the changes on the server.
 Every 4 seconds, the helper thread checks for file changes in the client directory and updates the server directory if any are identified.
 
@@ -78,6 +92,8 @@ Client Code:
 •	Implements a function (deleteFileFromServerPart2) that deletes files from the server while handling errors for unsuccessful deletions.
 •	Creates a function (automaticDirectorySync) that keeps directories synchronized between the client and server. It distinguishes between server-only files for deletion, client-only files for upload, and modified client files for upload. Gives comments on synchronization.
 •	Uses a helper thread to perform the automaticDirectorySync method concurrently, constantly checking for file changes between the client and server directories.
+
+
 Server Code:
 •	Imports Python libraries, such as SimpleXMLRPCServer for XML-RPC, ThreadingMixIn for multi-threading, and os for file operations.
 •	Defines server-specific constants like port number and directory path.
@@ -88,16 +104,25 @@ Server Code:
 •	It removes the provided file from the server directory and returns a success or error message depending on the outcome.
 •	Initializes the server by creating a custom server class instance, registering introspection functions, registering the uploadFileToServerPart2 and deleteFileFromServerPart2 methods, and launching the server.
 
+![image](https://github.com/user-attachments/assets/12b06dd6-7acb-44a5-89a0-424c9cd2a045)
+
+![image](https://github.com/user-attachments/assets/c1d1f518-1d63-4683-9212-c9ef192daa27)
+
+![image](https://github.com/user-attachments/assets/ccf9feb6-d1d7-45d2-8953-ee769d43c49b)
+
+
    
-Part 2
+       Part 2
  
-Part 3: Computation Server
+**Part 3: Computation Server**
+
 In Part 3, we built a computation server that supports two operations: adding two numbers and sorting an array via both synchronous and asynchronous RPCs.
 
 Synchronous RPC
 In synchronous RPC, the client requests an operation from the server and expects an immediate answer.
 
-Code Overview:
+## Code Overview:
+
 Client:
 •	Imports xmlrpc.client, os, and threading.
 •	Defines the server port as 3000.
@@ -114,12 +139,15 @@ Server:
 •	Implements the additionSync and sortingSync functions for addition and sorting operations, respectively.
 •	Creates a custom server class, registers functions, and defines server information (localhost and port).
 •	Registers standard introspection functions, gives the additionSync and sortingSync methods appropriate names, and begins processing client requests indefinitely.
+
+![image](https://github.com/user-attachments/assets/d881b61d-1d2b-4dcf-9706-c285299b99fd)
+
  
 Part 3 Synchronous
 Asynchronous RPC
 In asynchronous RPC, the client requests an action and waits for a response from the server. It can carry out other duties while the server handles the job. When completed, the server transmits the response to the client.
 
-Code Overview:
+## Code Overview:
 Client:
 •	Import the required libraries, which include asyncio for asynchronous tasks, rpyc for RPC communication, and os for system-related operations.
 •	Define the server's port number as server_port, which is 3000.
@@ -143,7 +171,7 @@ Server:
 •	ThreadedServer creates a threaded server instance named server. It uses the CustomXMLRPCServer class to listen on the specified port.
 •	Start the server by calling server.start(), which listens for incoming client connections and handles their RPC queries.
 
-Learnings:
+## Learnings:
 •	RPC Protocol Knowledge: I gained a thorough understanding of Remote Procedure Call (RPC) protocols, particularly how they permit communication between distributed systems.
 •	Project Architecture: I learned how to analyze and describe complicated project structures, such as component divisions and interactions.
 •	File Operations: Learned about file handling operations in a client-server architecture, including UPLOAD, DOWNLOAD, DELETE, and RENAME.
@@ -153,7 +181,7 @@ Learnings:
 •	Error Handling: Learned how to handle errors and manage exceptions, assuring the reliability of both client and server components.
 •	Asynchronous Programming: I learned how to efficiently implement asynchronous RPC calls, which allow for asynchronous client-server interactions.
 
-Challenges Faced:
+## Challenges Faced:
 We encountered difficulties during the implementation of RPC. Understanding and managing the relationship between the server and client. Understanding which ports are open and why a few are unable to open. Determine whether two directories are comparable or whether they have been modified. Identifying effective strategies for managing file uploads and downloads on the server.
 
 
